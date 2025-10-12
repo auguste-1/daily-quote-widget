@@ -8,8 +8,10 @@
 
 import Foundation
 
-struct Quote {
+struct Quote: Identifiable {
+    let id: UUID
     let text: String
     let author: String
     let source: String?
+    let sourceId: UUID
 }

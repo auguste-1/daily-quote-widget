@@ -4,8 +4,6 @@
 
 ---
 
-# Let Them - Mel Robbins
-
 - When you say Let Them, you're not giving up or walking away. You're releasing that grip you have on how things should go and allowing them to unfold the way they will go. You're freeing yourself.
 
 - The 5 Second Rule taught me that action is the answer. Thinking about your problems will never solve them. Waiting around to feel like doing something means you'll never do it. No one is coming to save you. You must save yourself from yourself.

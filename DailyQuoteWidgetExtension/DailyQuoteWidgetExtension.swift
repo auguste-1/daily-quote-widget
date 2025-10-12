@@ -9,24 +9,44 @@ struct SimpleEntry: TimelineEntry {
 
 // Provider - controls when and what data to show
 struct Provider: TimelineProvider {
+    let selector = QuoteSelector()
+    
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), quote: quotes[0])
+        // Use first available quote as placeholder
+        if let quote = selector.getGlobalQuoteOfTheDay() {
+            return SimpleEntry(date: Date(), quote: quote)
+        }
+        
+        // Fallback if no quotes loaded
+        let fallbackQuote = Quote(
+            id: UUID(),
+            text: "Loading quotes...",
+            author: "Daily Quote Widget",
+            source: nil,
+            sourceId: UUID()
+        )
+        return SimpleEntry(date: Date(), quote: fallbackQuote)
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), quote: quotes.randomElement()!)
+        let quote = selector.getGlobalQuoteOfTheDay() ?? placeholder(in: context).quote
+        let entry = SimpleEntry(date: Date(), quote: quote)
         completion(entry)
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
         
-        // Generate a timeline: new quote every hour
+        // Generate a timeline: new quote each day for next 5 days
         let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, quote: quotes.randomElement()!)
-            entries.append(entry)
+        for dayOffset in 0 ..< 5 {
+            let entryDate = Calendar.current.date(byAdding: .day, value: dayOffset, to: currentDate)!
+            let quoteForThisDay = selector.getGlobalQuoteOfTheDay(date: entryDate)
+            
+            if let quote = quoteForThisDay {
+                let entry = SimpleEntry(date: entryDate, quote: quote)
+                entries.append(entry)
+            }
         }
 
         let timeline = Timeline(entries: entries, policy: .atEnd)
@@ -198,17 +218,41 @@ struct DailyQuoteWidgetExtension: Widget {
 #Preview(as: .systemSmall) {
     DailyQuoteWidgetExtension()
 } timeline: {
-    SimpleEntry(date: .now, quote: quotes[0])
+    let selector = QuoteSelector()
+    let quote = selector.getGlobalQuoteOfTheDay() ?? Quote(
+        id: UUID(),
+        text: "Preview quote",
+        author: "Author",
+        source: nil,
+        sourceId: UUID()
+    )
+    SimpleEntry(date: .now, quote: quote)
 }
 
 #Preview(as: .systemMedium) {
     DailyQuoteWidgetExtension()
 } timeline: {
-    SimpleEntry(date: .now, quote: quotes[1])
+    let selector = QuoteSelector()
+    let quote = selector.getGlobalQuoteOfTheDay() ?? Quote(
+        id: UUID(),
+        text: "Preview quote",
+        author: "Author",
+        source: nil,
+        sourceId: UUID()
+    )
+    SimpleEntry(date: .now, quote: quote)
 }
 
 #Preview(as: .systemLarge) {
     DailyQuoteWidgetExtension()
 } timeline: {
-    SimpleEntry(date: .now, quote: quotes[2])
+    let selector = QuoteSelector()
+    let quote = selector.getGlobalQuoteOfTheDay() ?? Quote(
+        id: UUID(),
+        text: "Preview quote",
+        author: "Author",
+        source: nil,
+        sourceId: UUID()
+    )
+    SimpleEntry(date: .now, quote: quote)
 }

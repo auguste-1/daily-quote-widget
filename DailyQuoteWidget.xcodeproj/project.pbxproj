@@ -9,8 +9,12 @@
 /* Begin PBXBuildFile section */
 		8E3DFB152E9C02A8003D8145 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3DFB142E9C02A8003D8145 /* Quote.swift */; };
 		8E3DFB162E9C02E2003D8145 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3DFB142E9C02A8003D8145 /* Quote.swift */; };
-		8E3DFB182E9C0315003D8145 /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3DFB172E9C0311003D8145 /* Quotes.swift */; };
-		8E3DFB192E9C0315003D8145 /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3DFB172E9C0311003D8145 /* Quotes.swift */; };
+		8E3DFB252E9C5633003D8145 /* Sources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3DFB242E9C5626003D8145 /* Sources.swift */; };
+		8E3DFB262E9C5633003D8145 /* Sources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3DFB242E9C5626003D8145 /* Sources.swift */; };
+		8E3DFB282E9C565E003D8145 /* QuoteParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3DFB272E9C5658003D8145 /* QuoteParser.swift */; };
+		8E3DFB292E9C565E003D8145 /* QuoteParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3DFB272E9C5658003D8145 /* QuoteParser.swift */; };
+		8E3DFB2B2E9C56B0003D8145 /* QuoteSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3DFB2A2E9C56AA003D8145 /* QuoteSelector.swift */; };
+		8E3DFB2C2E9C56B0003D8145 /* QuoteSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3DFB2A2E9C56AA003D8145 /* QuoteSelector.swift */; };
 		8E81D9AE2E931BD800C9EA96 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E81D9AD2E931BD800C9EA96 /* WidgetKit.framework */; };
 		8E81D9B02E931BD800C9EA96 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E81D9AF2E931BD800C9EA96 /* SwiftUI.framework */; };
 		8E81D9BB2E931BD900C9EA96 /* DailyQuoteWidgetExtensionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8E81D9AB2E931BD800C9EA96 /* DailyQuoteWidgetExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -42,7 +46,9 @@
 
 /* Begin PBXFileReference section */
 		8E3DFB142E9C02A8003D8145 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
-		8E3DFB172E9C0311003D8145 /* Quotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotes.swift; sourceTree = "<group>"; };
+		8E3DFB242E9C5626003D8145 /* Sources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources.swift; sourceTree = "<group>"; };
+		8E3DFB272E9C5658003D8145 /* QuoteParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteParser.swift; sourceTree = "<group>"; };
+		8E3DFB2A2E9C56AA003D8145 /* QuoteSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteSelector.swift; sourceTree = "<group>"; };
 		8E81D9992E9316F200C9EA96 /* DailyQuoteWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyQuoteWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E81D9AB2E931BD800C9EA96 /* DailyQuoteWidgetExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DailyQuoteWidgetExtensionExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E81D9AD2E931BD800C9EA96 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -103,8 +109,10 @@
 		8E81D9902E9316F200C9EA96 = {
 			isa = PBXGroup;
 			children = (
+				8E3DFB2A2E9C56AA003D8145 /* QuoteSelector.swift */,
+				8E3DFB272E9C5658003D8145 /* QuoteParser.swift */,
+				8E3DFB242E9C5626003D8145 /* Sources.swift */,
 				8E3DFB1B2E9C51E3003D8145 /* Data */,
-				8E3DFB172E9C0311003D8145 /* Quotes.swift */,
 				8E3DFB142E9C02A8003D8145 /* Quote.swift */,
 				8E81D99B2E9316F200C9EA96 /* DailyQuoteWidget */,
 				8E81D9B12E931BD800C9EA96 /* DailyQuoteWidgetExtension */,
@@ -242,8 +250,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E3DFB192E9C0315003D8145 /* Quotes.swift in Sources */,
+				8E3DFB262E9C5633003D8145 /* Sources.swift in Sources */,
 				8E3DFB152E9C02A8003D8145 /* Quote.swift in Sources */,
+				8E3DFB2C2E9C56B0003D8145 /* QuoteSelector.swift in Sources */,
+				8E3DFB292E9C565E003D8145 /* QuoteParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,8 +261,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E3DFB182E9C0315003D8145 /* Quotes.swift in Sources */,
+				8E3DFB252E9C5633003D8145 /* Sources.swift in Sources */,
 				8E3DFB162E9C02E2003D8145 /* Quote.swift in Sources */,
+				8E3DFB2B2E9C56B0003D8145 /* QuoteSelector.swift in Sources */,
+				8E3DFB282E9C565E003D8145 /* QuoteParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

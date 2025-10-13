@@ -71,6 +71,11 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		8E3DFB4F2E9DA34E003D8145 /* Views */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Views;
+			sourceTree = "<group>";
+		};
 		8E81D99B2E9316F200C9EA96 /* DailyQuoteWidget */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = DailyQuoteWidget;
@@ -109,6 +114,7 @@
 		8E81D9902E9316F200C9EA96 = {
 			isa = PBXGroup;
 			children = (
+				8E3DFB4F2E9DA34E003D8145 /* Views */,
 				8E3DFB2A2E9C56AA003D8145 /* QuoteSelector.swift */,
 				8E3DFB272E9C5658003D8145 /* QuoteParser.swift */,
 				8E3DFB242E9C5626003D8145 /* Sources.swift */,
@@ -158,6 +164,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				8E3DFB1B2E9C51E3003D8145 /* Data */,
+				8E3DFB4F2E9DA34E003D8145 /* Views */,
 				8E81D99B2E9316F200C9EA96 /* DailyQuoteWidget */,
 			);
 			name = DailyQuoteWidget;
@@ -181,6 +188,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				8E3DFB1B2E9C51E3003D8145 /* Data */,
+				8E3DFB4F2E9DA34E003D8145 /* Views */,
 				8E81D9B12E931BD800C9EA96 /* DailyQuoteWidgetExtension */,
 			);
 			name = DailyQuoteWidgetExtensionExtension;

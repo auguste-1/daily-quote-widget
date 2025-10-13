@@ -8,7 +8,7 @@
 import Foundation
 
 class QuoteSelector {
-    private let quotesBySource: [UUID: [Quote]] 
+    private let quotesBySource: [UUID: [Quote]]
     
     init() {
         self.quotesBySource = QuoteParser.loadAllQuotes()
@@ -46,4 +46,9 @@ class QuoteSelector {
         
         return results
     }
-}
+    
+    // Get all quotes from a specific source (in order)
+    func getAllQuotes(for sourceId: UUID) -> [Quote] {
+        return quotesBySource[sourceId] ?? []
+    }
+}  // ✅ Class ends here, not before!

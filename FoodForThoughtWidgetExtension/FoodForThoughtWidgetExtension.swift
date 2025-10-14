@@ -21,7 +21,7 @@ struct Provider: TimelineProvider {
         let fallbackQuote = Quote(
             id: UUID(),
             text: "Loading quotes...",
-            author: "Daily Quote Widget",
+            author: "Food for Thought",
             source: nil,
             sourceId: UUID()
         )
@@ -55,7 +55,7 @@ struct Provider: TimelineProvider {
 }
 
 // Widget UI - the actual view (like your React component JSX)
-struct DailyQuoteWidgetExtensionEntryView : View {
+struct FoodForThoughtWidgetExtensionEntryView : View {
     var entry: Provider.Entry
     @Environment(\.widgetFamily) var family // Detects widget size
     
@@ -201,22 +201,22 @@ struct AccessoryInlineView: View {
 }
 
 // Widget configuration
-struct DailyQuoteWidgetExtension: Widget {
-    let kind: String = "DailyQuoteWidgetExtension"
+struct FoodForThoughtWidgetExtension: Widget {
+    let kind: String = "FoodForThoughtWidgetExtension"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            DailyQuoteWidgetExtensionEntryView(entry: entry)
+            FoodForThoughtWidgetExtensionEntryView(entry: entry)
         }
-        .configurationDisplayName("Daily Quote")
-        .description("Get inspired with a daily quote.")
+        .configurationDisplayName("Food for Thought")
+        .description("Get inspired with daily food for thought.")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }
 
 // Preview for Xcode
 #Preview(as: .systemSmall) {
-    DailyQuoteWidgetExtension()
+    FoodForThoughtWidgetExtension()
 } timeline: {
     let selector = QuoteSelector()
     let quote = selector.getGlobalQuoteOfTheDay() ?? Quote(
@@ -230,7 +230,7 @@ struct DailyQuoteWidgetExtension: Widget {
 }
 
 #Preview(as: .systemMedium) {
-    DailyQuoteWidgetExtension()
+    FoodForThoughtWidgetExtension()
 } timeline: {
     let selector = QuoteSelector()
     let quote = selector.getGlobalQuoteOfTheDay() ?? Quote(
@@ -244,7 +244,7 @@ struct DailyQuoteWidgetExtension: Widget {
 }
 
 #Preview(as: .systemLarge) {
-    DailyQuoteWidgetExtension()
+    FoodForThoughtWidgetExtension()
 } timeline: {
     let selector = QuoteSelector()
     let quote = selector.getGlobalQuoteOfTheDay() ?? Quote(

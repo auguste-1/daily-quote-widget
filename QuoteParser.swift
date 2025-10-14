@@ -1,6 +1,6 @@
 //
 //  QuoteParser.swift
-//  DailyQuoteWidget
+//  Food for Thought
 //
 //  Created by Augustė Rulienė on 12/10/2025.
 //
@@ -10,21 +10,21 @@ import Foundation
 class QuoteParser {
     
     // Parse a markdown file into quotes
-    static func parseQuotes(from fileName: String, sourceId: UUID) -> [Quote] {  // ✅ Changed parameter name
+    static func parseQuotes(from fileName: String, sourceId: UUID) -> [Quote] {
         guard let fileURL = Bundle.main.url(forResource: fileName, withExtension: "md"),
               let content = try? String(contentsOf: fileURL, encoding: .utf8) else {
             print("Error: Could not load \(fileName).md")
             return []
         }
         
-        return parseMarkdownContent(content, sourceId: sourceId)  // ✅ Changed parameter name
+        return parseMarkdownContent(content, sourceId: sourceId)
     }
     
-    private static func parseMarkdownContent(_ content: String, sourceId: UUID) -> [Quote] {  // ✅ Changed parameter name
+    private static func parseMarkdownContent(_ content: String, sourceId: UUID) -> [Quote] {
         let lines = content.components(separatedBy: .newlines)
         var quotes: [Quote] = []
         var author = ""
-        var sourceTitle = ""  // ✅ Changed from bookTitle
+        var sourceTitle = ""
         
         for line in lines {
             let trimmed = line.trimmingCharacters(in: .whitespaces)
@@ -38,7 +38,7 @@ class QuoteParser {
             
             // Extract title
             if trimmed.hasPrefix("# ") {
-                sourceTitle = trimmed  // ✅ Changed variable name
+                sourceTitle = trimmed
                     .replacingOccurrences(of: "# ", with: "")
                     .trimmingCharacters(in: .whitespaces)
             }
@@ -55,8 +55,8 @@ class QuoteParser {
                         id: UUID(),
                         text: quoteText,
                         author: author,
-                        source: sourceTitle,  // ✅ Changed variable name
-                        sourceId: sourceId  // ✅ Changed parameter name
+                        source: sourceTitle,
+                        sourceId: sourceId
                     ))
                 }
             }
@@ -67,10 +67,10 @@ class QuoteParser {
     
     // Load all quotes from all sources
     static func loadAllQuotes() -> [UUID: [Quote]] {
-        var quotesBySource: [UUID: [Quote]] = [:]  // ✅ Changed variable name
+        var quotesBySource: [UUID: [Quote]] = [:]
         
-        for source in allSources {  // ✅ Changed from allBooks
-            let quotes = parseQuotes(from: source.fileName, sourceId: source.id)  // ✅ Changed parameter name
+        for source in allSources {
+            let quotes = parseQuotes(from: source.fileName, sourceId: source.id)
             quotesBySource[source.id] = quotes
             print("Loaded \(quotes.count) quotes from \(source.title)")
         }

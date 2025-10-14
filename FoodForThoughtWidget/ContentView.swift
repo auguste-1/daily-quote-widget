@@ -29,7 +29,6 @@ struct ContentView: View {
                             .padding(.horizontal)
                         
                         ForEach(selector.getAllDailyQuotes(), id: \.source.id) { item in
-                            // ✅ Wrap in NavigationLink
                             NavigationLink(destination: SourceDetailView(
                                 source: item.source,
                                 quotes: selector.getAllQuotes(for: item.source.id)
@@ -40,7 +39,7 @@ struct ContentView: View {
                                 }
                                 .padding(.horizontal)
                             }
-                            .buttonStyle(PlainButtonStyle())  // ✅ Keeps card styling
+                            .buttonStyle(PlainButtonStyle())
                         }
                     }
                 }

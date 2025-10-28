@@ -30,23 +30,22 @@ class QuoteParser {
             let trimmed = line.trimmingCharacters(in: .whitespaces)
             
             // Extract author from metadata
-            if trimmed.hasPrefix("**Author:**") {
+            if trimmed.hasPrefix("**Author:**") || trimmed.hasPrefix("****Author:****") {
                 author = trimmed
+                    .replacingOccurrences(of: "****Author:****", with: "")
                     .replacingOccurrences(of: "**Author:**", with: "")
                     .trimmingCharacters(in: .whitespaces)
             }
             
             // Extract title
-            if trimmed.hasPrefix("# ") {
-                sourceTitle = trimmed
-                    .replacingOccurrences(of: "# ", with: "")
-                    .trimmingCharacters(in: .whitespaces)
+            if trimmed.hasPrefix("# ") && sourceTitle.isEmpty {
+                sourceTitle = trimmed.replacingOccurrences(of: "# ", with: "")
             }
             
-            // Parse bullet points as quotes
-            if trimmed.hasPrefix("- ") {
+            // Parse blockquotes as quotes (lines starting with >)
+            if trimmed.hasPrefix(">") {
                 let quoteText = trimmed
-                    .replacingOccurrences(of: "- ", with: "")
+                    .replacingOccurrences(of: ">", with: "")
                     .trimmingCharacters(in: .whitespaces)
                 
                 // Skip empty quotes

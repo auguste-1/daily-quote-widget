@@ -14,4 +14,5 @@ struct Quote: Identifiable {
     let author: String
     let source: String?
     let sourceId: UUID
+    let location: String?
 }

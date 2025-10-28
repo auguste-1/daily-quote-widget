@@ -9,12 +9,46 @@ struct ContentView: View {
                 VStack(spacing: 20) {
                     // Quote of the Day (Global Winner)
                     if let globalQuote = selector.getGlobalQuoteOfTheDay() {
-                        VStack(alignment: .leading, spacing: 12) {
-    
-                            QuoteDetailCard(quote: globalQuote, isHero: true)
+                        // Find the source to get its type
+                        let sourceType = allSources.first(where: { $0.id == globalQuote.sourceId })?.type
+                        
+                        VStack(alignment: .leading, spacing: 16) {
+                            Text("Quote of the Day")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                                .textCase(.uppercase)
+                                .tracking(1)
+                            
+                            Text(globalQuote.text)
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.primary)
+                                .lineSpacing(4)
+                            
+                            HStack(spacing: 4) {
+                                Text("—")
+                                Text(globalQuote.author)
+                                    .fontWeight(.semibold)
+                                    .italic()
+                                
+                                // Only show source if NOT quotes type
+                                if let source = globalQuote.source, sourceType?.lowercased() != "quotes" {
+                                    Text("·")
+                                    Text(source)
+                                        .italic()
+                                }
+                                
+                                if let location = globalQuote.location {
+                                    Text("·")
+                                    Text(location)
+                                        .italic()
+                                }
+                            }
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
                         }
-                        .padding(.horizontal)
-                        .padding(.top)
+                        .padding()
+                        .padding(.vertical, 8)
                     }
                     
                     // Divider
@@ -34,8 +68,7 @@ struct ContentView: View {
                                 quotes: selector.getAllQuotes(for: item.source.id)
                             )) {
                                 VStack(alignment: .leading, spacing: 8) {
-                                    // Quote card
-                                    QuoteDetailCard(quote: item.quote, isHero: false)
+                                    QuoteDetailCard(quote: item.quote, isHero: false, sourceType: item.source.type)
                                 }
                                 .padding(.horizontal)
                             }
@@ -45,7 +78,7 @@ struct ContentView: View {
                 }
                 .padding(.bottom)
             }
-            .navigationTitle("Food for Thought")
+            .navigationTitle("Inspiration of the Day")
         }
     }
 }

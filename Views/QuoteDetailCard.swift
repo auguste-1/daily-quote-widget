@@ -1,17 +1,9 @@
-//
-//  QuoteDetailCard.swift
-//  DailyQuoteWidget
-//
-//  Created by Augustė Rulienė on 13/10/2025.
-//
-
-// Individual quote card with full details
-
 import SwiftUI
 
 struct QuoteDetailCard: View {
     let quote: Quote
     let isHero: Bool
+    let sourceType: String?  // ✅ Added to know if it's "quotes" type
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -21,15 +13,23 @@ struct QuoteDetailCard: View {
                 .fontWeight(.medium)
                 .foregroundColor(.primary)
             
-            // Author and Source combined
+            // Author, Source, and Location
             HStack(spacing: 4) {
                 Text("—")
                 Text(quote.author)
                     .fontWeight(.semibold)
                     .italic()
-                if let source = quote.source {
+                
+                // Only show source if NOT a "quotes" type
+                if let source = quote.source, sourceType?.lowercased() != "quotes" {
                     Text("·")
                     Text(source)
+                        .italic()
+                }
+                
+                if let location = quote.location {
+                    Text("·")
+                    Text(location)
                         .italic()
                 }
             }
@@ -42,4 +42,19 @@ struct QuoteDetailCard: View {
         .cornerRadius(12)
         .shadow(color: isHero ? .black.opacity(0.1) : .clear, radius: 8, x: 0, y: 2)
     }
+}
+
+#Preview {
+    QuoteDetailCard(
+        quote: Quote(
+            id: UUID(),
+            text: "This is a preview quote",
+            author: "Preview Author",
+            source: "Preview Source",
+            sourceId: UUID(),
+            location: "8.35"
+        ),
+        isHero: false,
+        sourceType: "Book"
+    )
 }

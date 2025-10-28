@@ -41,8 +41,7 @@ struct SourceDetailView: View {
                 // All quotes in cards
                 VStack(spacing: 16) {
                     ForEach(quotes) { quote in
-                        QuoteDetailCard(quote: quote, isHero: false)
-                            .padding(.horizontal)
+                        QuoteDetailCard(quote: quote, isHero: false, sourceType: source.type)                            .padding(.horizontal)
                     }
                 }
             }

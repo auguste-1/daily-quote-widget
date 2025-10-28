@@ -23,7 +23,8 @@ struct Provider: TimelineProvider {
             text: "Loading quotes...",
             author: "Food for Thought",
             source: nil,
-            sourceId: UUID()
+            sourceId: UUID(),
+            location: nil
         )
         return SimpleEntry(date: Date(), quote: fallbackQuote)
     }
@@ -224,7 +225,8 @@ struct FoodForThoughtWidgetExtension: Widget {
         text: "Preview quote",
         author: "Author",
         source: nil,
-        sourceId: UUID()
+        sourceId: UUID(),
+        location: nil
     )
     SimpleEntry(date: .now, quote: quote)
 }
@@ -238,7 +240,8 @@ struct FoodForThoughtWidgetExtension: Widget {
         text: "Preview quote",
         author: "Author",
         source: nil,
-        sourceId: UUID()
+        sourceId: UUID(),
+        location: nil
     )
     SimpleEntry(date: .now, quote: quote)
 }
@@ -252,7 +255,8 @@ struct FoodForThoughtWidgetExtension: Widget {
         text: "Preview quote",
         author: "Author",
         source: nil,
-        sourceId: UUID()
+        sourceId: UUID(),
+        location: nil
     )
     SimpleEntry(date: .now, quote: quote)
 }
